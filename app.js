@@ -8,7 +8,7 @@ const fmt = new Intl.DateTimeFormat("ko-KR", {
 });
 
 async function api(path) {
-  const response = await fetch(path);
+  const response = await fetch(path, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await response.text());
   }
@@ -189,9 +189,9 @@ function renderRows(runs) {
 }
 
 async function refresh(force = false) {
-  const data = await api(`/api/monitor${force ? "?force=true" : ""}`);
+  const data = await api(`./monitor-data.json${force ? `?ts=${Date.now()}` : ""}`);
   const badge = document.querySelector("#sourceBadge");
-  badge.textContent = data.source === "notion" ? "Notion Live" : "샘플 데이터";
+  badge.textContent = data.source === "notion" ? "Notion Snapshot" : "샘플 데이터";
   badge.classList.toggle("sample", data.source !== "notion");
   document.querySelector("#updatedAt").textContent = dateText(data.updatedAt);
   if (data.error) {
