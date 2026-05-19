@@ -1,24 +1,78 @@
 # gohanpass-web-monitor
 
-`go.hanpass` 자동화의 Notion Raw data를 읽어 KPI, 현재 상태, 최근 실패, 반복 실패, 버전별 상태, 실행 기록을 보여주는 경량 모니터입니다.
+`go.hanpass` 자동화 Notion Raw data를 표시하는 모니터입니다.
 
-## What It Serves
+## URLs
 
-- `/` : 일반 대시보드
-- `/embed` : Notion 임베드용 대시보드
-- `/api/monitor` : 모니터 집계 JSON
-- `/health` : 헬스체크
-
-## Requirements
-
-- Python 3.11+
-- Notion integration token
-- Notion database id
-
-기본 대상 DB:
+GitHub Pages:
 
 ```text
-5ad73fbd195182bcb4b201fb9d76815f
+https://mhjang-qa.github.io/gohanpass-web-monitor/index.html
+https://mhjang-qa.github.io/gohanpass-web-monitor/embed.html
+```
+
+Notion 임베드용은 `embed.html`을 사용합니다.
+
+## Important
+
+GitHub Pages는 정적 호스팅이므로 Notion API를 직접 호출하지 않습니다.  
+실데이터를 바로 보이게 하려면 공개 HTTPS 백엔드가 필요합니다.
+
+## Backend Setup
+
+이 저장소에는 Render 배포용 [render.yaml](/private/tmp/gohanpass-web-monitor/render.yaml) 이 포함되어 있습니다.
+
+배포 후 예시 백엔드 URL:
+
+```text
+https://YOUR-BACKEND-DOMAIN
+```
+
+헬스체크:
+
+```text
+https://YOUR-BACKEND-DOMAIN/health
+```
+
+API:
+
+```text
+https://YOUR-BACKEND-DOMAIN/api/monitor
+```
+
+## How To Make Embed Work Immediately
+
+루트 [config.js](/private/tmp/gohanpass-web-monitor/config.js) 에 백엔드 주소를 넣습니다.
+
+```js
+window.MONITOR_API_BASE = "https://YOUR-BACKEND-DOMAIN";
+```
+
+그러면 아래 URL을 Notion에 바로 임베드할 수 있습니다.
+
+```text
+https://mhjang-qa.github.io/gohanpass-web-monitor/embed.html
+```
+
+또는 query parameter 방식도 가능합니다.
+
+```text
+https://mhjang-qa.github.io/gohanpass-web-monitor/embed.html?api=https://YOUR-BACKEND-DOMAIN
+```
+
+## Local Run
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python run.py
+```
+
+로컬 접속:
+
+```text
+http://127.0.0.1:8080
+http://127.0.0.1:8080/embed
 ```
 
 ## Environment
@@ -32,45 +86,3 @@ TIMEZONE=Asia/Seoul
 HOST=0.0.0.0
 PORT=8080
 ```
-
-`.env`가 없으면 `.env.example`를 fallback으로 읽습니다.
-
-## Run
-
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python run.py
-```
-
-접속:
-
-```text
-http://127.0.0.1:8080
-http://127.0.0.1:8080/embed
-```
-
-## Data Behavior
-
-- Notion API 조회 성공 시 실데이터를 표시합니다.
-- Notion 조회 실패 시 샘플 데이터로 fallback 합니다.
-- 화면 상단 배지로 `Notion Live` 또는 `샘플 데이터`를 구분합니다.
-
-## Notion Schema Recommendation
-
-| 컬럼명 | 타입 | 설명 |
-| --- | --- | --- |
-| 제목 | title | 실행 리포트명 |
-| 버전 | rich_text 또는 select | 릴리즈/빌드 버전 |
-| 플랫폼 | select | `WEB_CHROME_SERVER` |
-| PASS | number | 통과 TC 수 |
-| FAIL | number | 실패 TC 수 |
-| N/A | number | 제외/미실행 TC 수 |
-| Total | number | 전체 TC 수 |
-| 상태 | status 또는 select | 성공/실패/실행중 |
-| 테스트 결과 | select | 테스트 성공/테스트 실패 |
-| 결과 | rich_text | 원본 실행 로그 |
-| 등록일 | date | 실행 시각 |
-| 스냅샷 | files | 실패/최신 화면 이미지 |
-
-

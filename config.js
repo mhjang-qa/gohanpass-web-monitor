@@ -1,0 +1,2 @@
+window.MONITOR_API_BASE =
+  window.MONITOR_API_BASE || "https://YOUR-BACKEND-DOMAIN";
