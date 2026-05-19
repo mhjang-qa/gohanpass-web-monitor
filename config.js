@@ -1,2 +1,2 @@
 window.MONITOR_API_BASE =
-  window.MONITOR_API_BASE || "https://YOUR-BACKEND-DOMAIN";
+  window.MONITOR_API_BASE || "https://gohanpass-web-monitor.onrender.com";
