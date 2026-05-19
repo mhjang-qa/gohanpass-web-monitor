@@ -6,6 +6,9 @@ const apiBase =
   new URLSearchParams(window.location.search).get("api") ||
   window.MONITOR_API_BASE ||
   "";
+const snapshotUrl = window.MONITOR_SNAPSHOT_URL || "";
+const liveOnLoad = window.MONITOR_LIVE_ON_LOAD ?? true;
+const autoRefresh = window.MONITOR_AUTO_REFRESH ?? true;
 
 const fmt = new Intl.DateTimeFormat("ko-KR", {
   dateStyle: "short",
@@ -14,6 +17,17 @@ const fmt = new Intl.DateTimeFormat("ko-KR", {
 
 async function api(path) {
   const response = await fetch(`${apiBase}${path}`);
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+  return response.json();
+}
+
+async function snapshot() {
+  if (!snapshotUrl) {
+    return null;
+  }
+  const response = await fetch(snapshotUrl, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(await response.text());
   }
@@ -193,8 +207,7 @@ function renderRows(runs) {
   `).join("");
 }
 
-async function refresh(force = false) {
-  const data = await api(`/api/monitor${force ? "?force=true" : ""}`);
+function renderMonitor(data) {
   const badge = document.querySelector("#sourceBadge");
   badge.textContent = data.source === "notion" ? "Notion Live" : "샘플 데이터";
   badge.classList.toggle("sample", data.source !== "notion");
@@ -212,14 +225,32 @@ async function refresh(force = false) {
   renderRows(data.runs);
 }
 
+async function refresh(force = false) {
+  const data = await api(`/api/monitor${force ? "?force=true" : ""}`);
+  renderMonitor(data);
+}
+
+async function loadSnapshot() {
+  const data = await snapshot();
+  if (data) {
+    renderMonitor(data);
+  }
+}
+
 document.querySelector("#refreshBtn").addEventListener("click", () => {
+  if (!apiBase || apiBase.includes("YOUR-BACKEND-DOMAIN")) {
+    document.querySelector("#currentStatus").innerHTML = `<pre>Render API 주소가 설정되지 않았습니다.</pre>`;
+    return;
+  }
   refresh(true).catch((error) => {
     document.querySelector("#currentStatus").innerHTML = `<pre>${escapeHtml(error.message)}</pre>`;
   });
 });
 
-refresh().catch((error) => {
-  document.querySelector("#currentStatus").innerHTML = `<pre>${escapeHtml(error.message)}</pre>`;
-});
+loadSnapshot()
+  .then(() => (liveOnLoad && apiBase && !apiBase.includes("YOUR-BACKEND-DOMAIN") ? refresh().catch(() => {}) : null))
+  .catch(() => (liveOnLoad && apiBase && !apiBase.includes("YOUR-BACKEND-DOMAIN") ? refresh().catch(() => {}) : null));
 
-state.timer = window.setInterval(() => refresh().catch(() => {}), 30000);
+if (autoRefresh && liveOnLoad && apiBase && !apiBase.includes("YOUR-BACKEND-DOMAIN")) {
+  state.timer = window.setInterval(() => refresh().catch(() => {}), 30000);
+}

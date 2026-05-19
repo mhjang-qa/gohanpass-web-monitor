@@ -18,6 +18,11 @@ Notion 임베드용은 `embed.html`을 사용합니다.
 GitHub Pages는 정적 호스팅이므로 Notion API를 직접 호출하지 않습니다.  
 실데이터를 바로 보이게 하려면 공개 HTTPS 백엔드가 필요합니다.
 
+현재 동작 방식:
+
+- 첫 로드: 저장소의 `monitor-snapshot.json` 표시
+- `Raw data 재조회` 클릭: Render API 등 공개 백엔드에서 최신 Notion 데이터 조회
+
 ## Backend Setup
 
 이 저장소에는 Render 배포용 [render.yaml](/private/tmp/gohanpass-web-monitor/render.yaml) 이 포함되어 있습니다.
