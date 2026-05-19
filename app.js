@@ -2,13 +2,18 @@ const state = {
   timer: null,
 };
 
+const apiBase =
+  new URLSearchParams(window.location.search).get("api") ||
+  window.MONITOR_API_BASE ||
+  "";
+
 const fmt = new Intl.DateTimeFormat("ko-KR", {
   dateStyle: "short",
   timeStyle: "medium",
 });
 
 async function api(path) {
-  const response = await fetch(path);
+  const response = await fetch(`${apiBase}${path}`);
   if (!response.ok) {
     throw new Error(await response.text());
   }
