@@ -1,25 +1,25 @@
 {
   "source": "notion",
   "error": null,
-  "updatedAt": "2026-05-21T13:36:22",
+  "updatedAt": "2026-05-21T16:07:49",
   "kpi": {
-    "runs": 20,
-    "pass": 156,
+    "runs": 21,
+    "pass": 160,
     "fail": 43,
     "na": 0,
-    "total": 199,
-    "passRate": 78.4,
-    "failRate": 21.6,
+    "total": 203,
+    "passRate": 78.8,
+    "failRate": 21.2,
     "failedRuns": 10,
-    "latestStatus": "failed",
+    "latestStatus": "passed",
     "latestVersion": "1.0.0"
   },
   "current": {
-    "mode": "attention",
-    "title": "GO Hanpass 웹 자동리포트_20260521T091952",
+    "mode": "idle",
+    "title": "GO Hanpass 웹 자동리포트_20260521T135350",
     "message": "가장 최근 go.hanpass 자동화 실행 결과입니다.",
     "version": "1.0.0",
-    "startedAt": "2026-05-21T00:24:00.000Z"
+    "startedAt": "2026-05-21T04:56:00.000Z"
   },
   "recentFailures": [
     {
@@ -100,14 +100,32 @@
   "versions": [
     {
       "version": "1.0.0",
-      "runs": 20,
-      "passRate": 78.4,
+      "runs": 21,
+      "passRate": 78.8,
       "failed": 43,
       "status": "failed",
-      "latestAt": "2026-05-21T00:24:00.000Z"
+      "latestAt": "2026-05-21T04:56:00.000Z"
     }
   ],
   "runs": [
+    {
+      "id": "36773fbd-1951-81eb-94da-ff06e6e5cd6d",
+      "url": "https://www.notion.so/GO-Hanpass-_20260521T135350-36773fbd195181eb94daff06e6e5cd6d",
+      "title": "GO Hanpass 웹 자동리포트_20260521T135350",
+      "version": "1.0.0",
+      "platform": "Web",
+      "status": "passed",
+      "statusText": "완료",
+      "pass": 4,
+      "fail": 0,
+      "na": 0,
+      "total": 4,
+      "resultText": "성공 | PASS 4 / FAIL 0 / N/A 0 / ERROR 0 / Total 4",
+      "failedItems": [],
+      "snapshots": [],
+      "createdAt": "2026-05-21T04:56:00.000Z",
+      "lastEditedAt": "2026-05-21T04:56:00.000Z"
+    },
     {
       "id": "36773fbd-1951-8150-aefc-fc82702eeb20",
       "url": "https://www.notion.so/GO-Hanpass-_20260521T091952-36773fbd19518150aefcfc82702eeb20",
