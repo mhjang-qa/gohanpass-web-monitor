@@ -1,25 +1,25 @@
 {
   "source": "notion",
   "error": null,
-  "updatedAt": "2026-05-22T13:58:10",
+  "updatedAt": "2026-05-22T14:32:02",
   "kpi": {
-    "runs": 27,
-    "pass": 331,
+    "runs": 28,
+    "pass": 335,
     "fail": 120,
     "na": 15,
-    "total": 466,
-    "passRate": 71.0,
-    "failRate": 25.8,
+    "total": 470,
+    "passRate": 71.3,
+    "failRate": 25.5,
     "failedRuns": 16,
-    "latestStatus": "failed",
+    "latestStatus": "passed",
     "latestVersion": "1.0.0"
   },
   "current": {
-    "mode": "attention",
-    "title": "GO Hanpass 웹 자동리포트_20260522T104933",
+    "mode": "idle",
+    "title": "GO Hanpass 웹 자동리포트_20260522T140433",
     "message": "가장 최근 go.hanpass 자동화 실행 결과입니다.",
     "version": "1.0.0",
-    "startedAt": "2026-05-22T01:57:00.000Z"
+    "startedAt": "2026-05-22T05:06:00.000Z"
   },
   "recentFailures": [
     {
@@ -100,14 +100,32 @@
   "versions": [
     {
       "version": "1.0.0",
-      "runs": 27,
-      "passRate": 71.0,
+      "runs": 28,
+      "passRate": 71.3,
       "failed": 120,
       "status": "failed",
-      "latestAt": "2026-05-22T01:57:00.000Z"
+      "latestAt": "2026-05-22T05:06:00.000Z"
     }
   ],
   "runs": [
+    {
+      "id": "36873fbd-1951-81b2-8140-f36d8f58524b",
+      "url": "https://www.notion.so/GO-Hanpass-_20260522T140433-36873fbd195181b28140f36d8f58524b",
+      "title": "GO Hanpass 웹 자동리포트_20260522T140433",
+      "version": "1.0.0",
+      "platform": "Web",
+      "status": "passed",
+      "statusText": "완료",
+      "pass": 4,
+      "fail": 0,
+      "na": 0,
+      "total": 4,
+      "resultText": "성공 | PASS 4 / FAIL 0 / N/A 0 / ERROR 0 / Total 4",
+      "failedItems": [],
+      "snapshots": [],
+      "createdAt": "2026-05-22T05:06:00.000Z",
+      "lastEditedAt": "2026-05-22T05:06:00.000Z"
+    },
     {
       "id": "36873fbd-1951-8173-83eb-f0a7367969c6",
       "url": "https://www.notion.so/GO-Hanpass-_20260522T104933-36873fbd1951817383ebf0a7367969c6",
@@ -124,7 +142,7 @@
       "failedItems": [],
       "snapshots": [],
       "createdAt": "2026-05-22T01:57:00.000Z",
-      "lastEditedAt": "2026-05-22T01:57:00.000Z"
+      "lastEditedAt": "2026-05-22T05:05:00.000Z"
     },
     {
       "id": "36873fbd-1951-812c-98b8-ce09b4bd92db",
