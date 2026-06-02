@@ -15,11 +15,6 @@ async function api(path) {
   return response.json();
 }
 
-function withCacheBust(path) {
-  const divider = path.includes("?") ? "&" : "?";
-  return `${path}${divider}ts=${Date.now()}`;
-}
-
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -194,7 +189,7 @@ function renderRows(runs) {
 }
 
 async function refresh(force = false) {
-  const data = await api(withCacheBust("./monitor-data.json"));
+  const data = await api(`./monitor-data.json${force ? `?ts=${Date.now()}` : ""}`);
   const badge = document.querySelector("#sourceBadge");
   badge.textContent = data.source === "notion" ? "Notion Snapshot" : "샘플 데이터";
   badge.classList.toggle("sample", data.source !== "notion");
