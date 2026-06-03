@@ -8,16 +8,11 @@ const fmt = new Intl.DateTimeFormat("ko-KR", {
 });
 
 async function api(path) {
-  const response = await fetch(path, { cache: "no-store" });
+  const response = await fetch(path);
   if (!response.ok) {
     throw new Error(await response.text());
   }
   return response.json();
-}
-
-function withCacheBust(path) {
-  const divider = path.includes("?") ? "&" : "?";
-  return `${path}${divider}ts=${Date.now()}`;
 }
 
 function escapeHtml(value) {
@@ -194,8 +189,7 @@ function renderRows(runs) {
 }
 
 async function refresh(force = false) {
-  const query = force ? "?force=true" : "";
-  const data = await api(withCacheBust(`/api/monitor${query}`));
+  const data = await api(`/api/monitor${force ? "?force=true" : ""}`);
   const badge = document.querySelector("#sourceBadge");
   badge.textContent = data.source === "notion" ? "Notion Live" : "샘플 데이터";
   badge.classList.toggle("sample", data.source !== "notion");
