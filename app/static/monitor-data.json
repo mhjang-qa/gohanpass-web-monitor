@@ -1,15 +1,15 @@
 {
   "source": "notion",
   "error": null,
-  "updatedAt": "2026-06-05T08:52:33",
+  "updatedAt": "2026-06-05T00:56:42+00:00",
   "kpi": {
-    "runs": 39,
-    "pass": 669,
+    "runs": 40,
+    "pass": 694,
     "fail": 273,
-    "na": 105,
-    "total": 1047,
-    "passRate": 63.9,
-    "failRate": 26.1,
+    "na": 115,
+    "total": 1082,
+    "passRate": 64.1,
+    "failRate": 25.2,
     "failedRuns": 23,
     "latestStatus": "passed",
     "latestVersion": "1.0.0"
@@ -19,7 +19,7 @@
     "title": "GO Hanpass 자동화 테스트 결과",
     "message": "가장 최근 go.hanpass 자동화 실행 결과입니다.",
     "version": "1.0.0",
-    "startedAt": "2026-06-04T06:50:00.000Z"
+    "startedAt": "2026-06-05T00:09:00.000Z"
   },
   "recentFailures": [
     {
@@ -100,14 +100,32 @@
   "versions": [
     {
       "version": "1.0.0",
-      "runs": 39,
-      "passRate": 63.9,
+      "runs": 40,
+      "passRate": 64.1,
       "failed": 273,
       "status": "failed",
-      "latestAt": "2026-06-04T06:50:00.000Z"
+      "latestAt": "2026-06-05T00:09:00.000Z"
     }
   ],
   "runs": [
+    {
+      "id": "37673fbd-1951-8108-b3f8-d9562a566176",
+      "url": "https://app.notion.com/p/GO-Hanpass-37673fbd19518108b3f8d9562a566176",
+      "title": "GO Hanpass 자동화 테스트 결과",
+      "version": "1.0.0",
+      "platform": "Web",
+      "status": "passed",
+      "statusText": "완료",
+      "pass": 25,
+      "fail": 0,
+      "na": 10,
+      "total": 35,
+      "resultText": "성공 | PASS 25 / FAIL 0 / N/A 10 / ERROR 0 / Total 35",
+      "failedItems": [],
+      "snapshots": [],
+      "createdAt": "2026-06-05T00:09:00.000Z",
+      "lastEditedAt": "2026-06-05T00:09:00.000Z"
+    },
     {
       "id": "37573fbd-1951-8175-bc55-f25d362a7a48",
       "url": "https://app.notion.com/p/GO-Hanpass-37573fbd19518175bc55f25d362a7a48",
