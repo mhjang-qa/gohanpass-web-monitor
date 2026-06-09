@@ -20,8 +20,3 @@ TIMEZONE = os.getenv("TIMEZONE", "Asia/Seoul")
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8080"))
 CACHE_TTL_SECONDS = int(os.getenv("CACHE_TTL_SECONDS", "30"))
-QA_CONSOLE_SHARED_SECRET = os.getenv("QA_CONSOLE_SHARED_SECRET", "").strip()
-QA_CONSOLE_ALLOWED_ORIGIN = os.getenv(
-    "QA_CONSOLE_ALLOWED_ORIGIN",
-    "https://gohanpass-qa-console.onrender.com",
-).rstrip("/")
