@@ -10,6 +10,10 @@ services:
         sync: false
       - key: NOTION_DB_ID
         value: 5ad73fbd195182bcb4b201fb9d76815f
+      - key: QA_CONSOLE_SHARED_SECRET
+        sync: false
+      - key: QA_CONSOLE_ALLOWED_ORIGIN
+        value: https://gohanpass-qa-console.onrender.com
       - key: TIMEZONE
         value: Asia/Seoul
       - key: HOST

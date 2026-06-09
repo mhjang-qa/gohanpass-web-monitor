@@ -2,6 +2,8 @@
 
 `go.hanpass` 자동화의 Notion Raw data를 읽어 KPI, 현재 상태, 최근 실패, 반복 실패, 버전별 상태, 실행 기록을 보여주는 경량 모니터입니다.
 
+이 서비스는 별도 로그인 화면은 없지만, QA Console에서 서비스별 signed launch URL을 발급할 수 있도록 `/sso/launch`, `/sso/logout` 엔드포인트를 함께 제공합니다.
+
 ## What It Serves
 
 - `/` : 일반 대시보드
@@ -31,6 +33,8 @@ NOTION_DB_ID=5ad73fbd195182bcb4b201fb9d76815f
 TIMEZONE=Asia/Seoul
 HOST=0.0.0.0
 PORT=8080
+QA_CONSOLE_SHARED_SECRET=<console-child 공통 랜덤 문자열>
+QA_CONSOLE_ALLOWED_ORIGIN=https://gohanpass-qa-console.onrender.com
 ```
 
 `.env`가 없으면 `.env.example`를 fallback으로 읽습니다.
